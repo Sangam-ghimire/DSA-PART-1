@@ -8,3 +8,10 @@ bool LinkedList::isEmpty(LinkedList List){
 	return false;
 }
 
+void LinkedList::addToHead(Node *nodetobeadded)
+{
+	Node temp;
+	temp.info= nodetobeadded->data;
+
+}
+
