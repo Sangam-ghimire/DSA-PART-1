@@ -15,8 +15,8 @@ public:
 class LinkedList{
 
 private:
-	Node* Head;
-	Node* Tail;
+	Node* Head; //pointer to first node
+	Node* Tail; //pointer to tail node
 public:
 	bool isEmpty();
 
