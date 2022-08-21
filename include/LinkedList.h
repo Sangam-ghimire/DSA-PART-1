@@ -19,9 +19,9 @@ void addToHead(Node *&head, int val);
 void addToTail(Node *&head, int val);
 void add(Node *&nodetobeadded, int val, int key);
 
-void removeFromHead();
-void removeFromTail();
-void remove(int data);
+void removeFromHead(Node* &head);
+void removeFromTail(Node* &head);
+void remove(Node *&head,int data);
 
 Node *retrieve(int data);
 

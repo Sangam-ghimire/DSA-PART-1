@@ -36,6 +36,32 @@ void addToTail(Node *&head, int val)
 	}
 	temp->next = nnode; // adding new node to tail
 }
+void removeFromHead(Node* &head)
+{
+	if(head==NULL)//if empty doesnot do anything
+	{
+		return;
+	}
+	Node* tobedeleted=head;
+	head=head->next;
+	delete tobedeleted;
+}
+void remove(Node *&head,int data)
+{
+	if(head->next==NULL){
+		removeFromHead(head); //id only one node is present
+		return;
+	}
+	Node* temp=head;
+	while (temp->next->info!=data)
+	{
+		temp=temp->next;
+	}
+	Node* tobedeleted=temp->next;
+	temp->next=temp->next->next;
+
+	delete tobedeleted;
+}
 
 void traverse(Node *head) // function to display all the data of linked list
 {
