@@ -1,35 +1,49 @@
 #include "LinkedList.h"
 #include <iostream>
 
-bool isEmpty(Node* &head){
-	if(head == nullptr){
-		return true;	
+bool isEmpty(Node *head)
+{
+	if (head == NULL)
+	{
+		return true;
 	}
 	return false;
 }
 
-void addToHead(Node* &head)
+void addToHead(Node *&head, int val)
 {
-	Node temp;
-	temp.info= nodetobeadded->data;
+	Node *nnode = new Node(val);
 
+	nnode->next = head;
+	head = nnode;
 }
 
-void addToTail(Node* &head,int val)
+void addToTail(Node *&head, int val)
 {
-	Node* nnode= new Node(val); //new node to be added to tail
+	Node *nnode = new Node(val); // new node to be added to tail
 
-	if(head==nullptr) //if the linked list is empty
+	if (head == NULL) // if the linked list is empty
 	{
-		head =nnode;
-	}
+		head = nnode;
+		return;
+	} // we can also directly call addToHead function too :)
 
-	Node* temp= head;
+	Node *temp = head;
 
-	while(temp->next != nullptr)//traversal till the end
+	while (temp->next != NULL) // traverse till end
 	{
-		temp=temp->next;
+		temp = temp->next;
 	}
-	temp->next=nnode; //adding new node to tail
+	temp->next = nnode; // adding new node to tail
 }
 
+void traverse(Node *head) // function to display all the data of linked list
+{
+	Node *temp = head;
+	while (temp != NULL) // traversal till the end of list
+	{
+		std::cout << temp->info <<" ";
+		temp = temp->next;
+	}
+	std::cout << std::endl;
+}
