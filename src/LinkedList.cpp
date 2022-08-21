@@ -36,6 +36,9 @@ void addToTail(Node *&head, int val)
 	}
 	temp->next = nnode; // adding new node to tail
 }
+
+//void add is left to be done
+
 void removeFromHead(Node *&head)
 {
 	if (head == NULL) // if empty doesnot do anything
@@ -111,4 +114,19 @@ bool search(Node *head, int datatobesearched)
 		}
 		temp = temp->next;
 	}
+	return false;
+}
+
+Node *retrieve(Node* head,int datatobesearched)
+{
+	Node *temp = head;
+	while (temp != NULL)
+	{
+		if (temp->info == datatobesearched)
+		{
+			return temp;
+		}
+		temp = temp->next;
+	}
+	std::cout<<"Data Not Found"<<std::endl;
 }
