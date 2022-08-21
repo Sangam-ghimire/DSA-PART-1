@@ -36,29 +36,55 @@ void addToTail(Node *&head, int val)
 	}
 	temp->next = nnode; // adding new node to tail
 }
-void removeFromHead(Node* &head)
+void removeFromHead(Node *&head)
 {
-	if(head==NULL)//if empty doesnot do anything
+	if (head == NULL) // if empty doesnot do anything
 	{
 		return;
 	}
-	Node* tobedeleted=head;
-	head=head->next;
+	Node *tobedeleted = head;
+	head = head->next;
 	delete tobedeleted;
 }
-void remove(Node *&head,int data)
+
+void removeFromTail(Node *&head)
+// Note that head has been used for exploring instead of tail pointer
+//  we have used delete here also explored with NULL
 {
-	if(head->next==NULL){
-		removeFromHead(head); //id only one node is present
+	if (head != NULL)
+	{
+		if (head->next == NULL) // if only one node delete that
+		{
+			head = NULL;
+		}
+		else
+		{
+			Node *temp = head;
+			while (temp->next->next != NULL) // this gives us access to the node needed
+			{
+				temp = temp->next;
+			}
+			Node *tailNode = temp->next;
+			temp->next = NULL;
+			delete tailNode;
+		}
+	}
+}
+
+void remove(Node *&head, int data)
+{
+	if (head->next == NULL)
+	{
+		removeFromHead(head); // if only one node is present
 		return;
 	}
-	Node* temp=head;
-	while (temp->next->info!=data)
+	Node *temp = head;
+	while (temp->next->info != data)
 	{
-		temp=temp->next;
+		temp = temp->next;
 	}
-	Node* tobedeleted=temp->next;
-	temp->next=temp->next->next;
+	Node *tobedeleted = temp->next;
+	temp->next = temp->next->next;
 
 	delete tobedeleted;
 }
@@ -68,21 +94,21 @@ void traverse(Node *head) // function to display all the data of linked list
 	Node *temp = head;
 	while (temp != NULL) // traversal till the end of list
 	{
-		std::cout << temp->info <<" ";
+		std::cout << temp->info << " ";
 		temp = temp->next;
 	}
 	std::cout << std::endl;
 }
 
-bool search(Node *head,int datatobesearched)
+bool search(Node *head, int datatobesearched)
 {
-	Node *temp=head;
-	while(temp!=NULL)
+	Node *temp = head;
+	while (temp != NULL)
 	{
-		if(temp->info==datatobesearched)
+		if (temp->info == datatobesearched)
 		{
 			return true;
 		}
-		temp=temp->next;
+		temp = temp->next;
 	}
 }
