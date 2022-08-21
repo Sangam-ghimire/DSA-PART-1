@@ -25,7 +25,7 @@ void remove(int data);
 
 Node *retrieve(int data);
 
-bool search(int datatobesearched);
+bool search(Node *head, int datatobesearched);
 void traverse(Node *head);
 
 #endif

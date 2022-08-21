@@ -47,3 +47,16 @@ void traverse(Node *head) // function to display all the data of linked list
 	}
 	std::cout << std::endl;
 }
+
+bool search(Node *head,int datatobesearched)
+{
+	Node *temp=head;
+	while(temp!=NULL)
+	{
+		if(temp->info==datatobesearched)
+		{
+			return true;
+		}
+		temp=temp->next;
+	}
+}
