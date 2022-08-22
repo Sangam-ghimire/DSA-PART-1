@@ -37,7 +37,7 @@ void addToTail(Node *&head, int val)
 	temp->next = nnode; // adding new node to tail
 }
 
-void add(Node *&head, int val, int databefore) // data before represents the position before which the new node is to be added
+void add(Node *&head, int val, int databefore) // data before represents the data before which the new node is to be added
 {
 	Node *nnode = new Node(val);
 
