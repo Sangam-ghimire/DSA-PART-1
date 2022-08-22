@@ -43,6 +43,12 @@ void add(Node *&head, int val, int databefore) // data before represents the dat
 
 	Node *temp = head;
 
+	if (temp->info == databefore) // if the first node is matching
+	{
+		addToHead(head, val);
+		return;
+	}
+
 	while (temp->next->info != databefore)
 	{
 		temp = temp->next;
@@ -141,4 +147,5 @@ Node *retrieve(Node *head, int datatobesearched)
 		temp = temp->next;
 	}
 	std::cout << "Data Not Found" << std::endl;
+	return NULL;
 }
