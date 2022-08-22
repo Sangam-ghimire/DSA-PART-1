@@ -13,19 +13,19 @@ public:
 	~Node() {} // default deconstructor
 };
 
-bool isEmpty(Node *head); //done
+bool isEmpty(Node *head); // done
 
-void addToHead(Node *&head, int val); //done
-void addToTail(Node *&head, int val); //done
-void add(Node *&nodetobeadded, int val, int key);
+void addToHead(Node *&head, int val); // done
+void addToTail(Node *&head, int val); // done
+void add(Node *&head, int val, int key);
 
-void removeFromHead(Node* &head); //done
-void removeFromTail(Node* &head); //done
-void remove(Node *&head,int data); //done
+void removeFromHead(Node *&head);	// done
+void removeFromTail(Node *&head);	// done
+void remove(Node *&head, int data); // done
 
-Node *retrieve(int datatobesearched); 
+Node *retrieve(int datatobesearched);
 
-bool search(Node *head, int datatobesearched); //done
-void traverse(Node *head); //done
+bool search(Node *head, int datatobesearched); // done
+void traverse(Node *head);					   // done
 
 #endif

@@ -37,7 +37,19 @@ void addToTail(Node *&head, int val)
 	temp->next = nnode; // adding new node to tail
 }
 
-//void add is left to be done
+void add(Node *&head, int val, int databefore) // data before represents the position before which the new node is to be added
+{
+	Node *nnode = new Node(val);
+
+	Node *temp = head;
+
+	while (temp->next->info != databefore)
+	{
+		temp = temp->next;
+	}
+	nnode->next = temp->next;
+	temp->next = nnode; // changing the link
+}
 
 void removeFromHead(Node *&head)
 {
@@ -117,7 +129,7 @@ bool search(Node *head, int datatobesearched)
 	return false;
 }
 
-Node *retrieve(Node* head,int datatobesearched)
+Node *retrieve(Node *head, int datatobesearched)
 {
 	Node *temp = head;
 	while (temp != NULL)
@@ -128,5 +140,5 @@ Node *retrieve(Node* head,int datatobesearched)
 		}
 		temp = temp->next;
 	}
-	std::cout<<"Data Not Found"<<std::endl;
+	std::cout << "Data Not Found" << std::endl;
 }
