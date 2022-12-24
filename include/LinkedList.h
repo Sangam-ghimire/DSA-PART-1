@@ -13,20 +13,28 @@ public:
 	~Node() {} // default deconstructor
 };
 
-bool isEmpty(Node *head); // done
+class LinkedList
+{
+	Node *head = NULL;
+	Node *tail = NULL;
 
-void addToHead(Node *&head, int val); // done
-void addToTail(Node *&head, int val); // done
-void add(Node *&head, int val, int databefore);
-// done using data before which the new node is to added rather than position
+public:
+	bool isEmpty(); // done
 
-void removeFromHead(Node *&head);	// done
-void removeFromTail(Node *&head);	// done
-void remove(Node *&head, int data); // done
+	void addToHead(int val); // done
+	void addToTail(int val); // done
+	void add(int val, int databefore);
+	// done using data before which the new node is to added rather than position
 
-Node *retrieve(Node *head, int datatobesearched); // done
+	int removeFromHead(); // done
+	int removeFromTail(); // done
+	int remove(int data); // done
 
-bool search(Node *head, int datatobesearched); // done
-void traverse(Node *head);					   // done
+	Node *retrieve(int datatobesearched); // done
+
+	bool search(int datatobesearched); // done
+	void traverse();
+};
+// done
 
 #endif

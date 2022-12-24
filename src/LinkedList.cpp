@@ -1,7 +1,7 @@
 #include "LinkedList.h"
 #include <iostream>
 
-bool isEmpty(Node *head)
+bool LinkedList::isEmpty()
 {
 	if (head == NULL)
 	{
@@ -10,15 +10,23 @@ bool isEmpty(Node *head)
 	return false;
 }
 
-void addToHead(Node *&head, int val)
+void LinkedList::addToHead(int val)
 {
 	Node *nnode = new Node(val);
-
-	nnode->next = head;
-	head = nnode;
+	if (head == NULL)
+	{
+		nnode->next = head;
+		head = nnode;
+		tail = head;
+	}
+	else
+	{
+		nnode->next = head;
+		head = nnode;
+	}
 }
 
-void addToTail(Node *&head, int val)
+void LinkedList::addToTail(int val)
 {
 	Node *nnode = new Node(val); // new node to be added to tail
 
@@ -37,7 +45,7 @@ void addToTail(Node *&head, int val)
 	temp->next = nnode; // adding new node to tail
 }
 
-void add(Node *&head, int val, int databefore) // data before represents the data before which the new node is to be added
+void LinkedList::add(int val, int databefore) // data before represents the data before which the new node is to be added
 {
 	Node *nnode = new Node(val);
 
@@ -45,7 +53,7 @@ void add(Node *&head, int val, int databefore) // data before represents the dat
 
 	if (temp->info == databefore) // if the first node is matching
 	{
-		addToHead(head, val);
+		addToHead(val);
 		return;
 	}
 
@@ -57,47 +65,49 @@ void add(Node *&head, int val, int databefore) // data before represents the dat
 	temp->next = nnode; // changing the link
 }
 
-void removeFromHead(Node *&head)
+int LinkedList::removeFromHead()
 {
 	if (head == NULL) // if empty doesnot do anything
 	{
-		return;
+		return 0;
 	}
 	Node *tobedeleted = head;
 	head = head->next;
+	return head->info;
 	delete tobedeleted;
 }
 
-void removeFromTail(Node *&head)
-// Note that head has been used for exploring instead of tail pointer
-//  we have used delete here also explored with NULL
+int LinkedList::removeFromTail()
 {
 	if (head != NULL)
 	{
-		if (head->next == NULL) // if only one node delete that
+		Node *tobedeleted = tail;
+		if (head == tail)
 		{
 			head = NULL;
+			tail = NULL;
 		}
 		else
 		{
 			Node *temp = head;
-			while (temp->next->next != NULL) // this gives us access to the node needed
+			while (temp->next != tail)
 			{
 				temp = temp->next;
 			}
-			Node *tailNode = temp->next;
+			tail = temp;
+			int rtr = temp->info;
 			temp->next = NULL;
-			delete tailNode;
+			delete tobedeleted;
+			return rtr;
 		}
 	}
 }
 
-void remove(Node *&head, int data)
+int LinkedList::remove(int data)
 {
 	if (head->next == NULL)
 	{
-		removeFromHead(head); // if only one node is present
-		return;
+		return removeFromHead(); // if only one node is present
 	}
 	Node *temp = head;
 	while (temp->next->info != data)
@@ -106,11 +116,12 @@ void remove(Node *&head, int data)
 	}
 	Node *tobedeleted = temp->next;
 	temp->next = temp->next->next;
-
+	int rtr = tobedeleted->info;
 	delete tobedeleted;
+	return rtr;
 }
 
-void traverse(Node *head) // function to display all the data of linked list
+void LinkedList::traverse() // function to display all the data of linked list
 {
 	Node *temp = head;
 	while (temp != NULL) // traversal till the end of list
@@ -121,7 +132,7 @@ void traverse(Node *head) // function to display all the data of linked list
 	std::cout << std::endl;
 }
 
-bool search(Node *head, int datatobesearched)
+bool LinkedList::search(int datatobesearched)
 {
 	Node *temp = head;
 	while (temp != NULL)
@@ -135,7 +146,7 @@ bool search(Node *head, int datatobesearched)
 	return false;
 }
 
-Node *retrieve(Node *head, int datatobesearched)
+Node *LinkedList::retrieve(int datatobesearched)
 {
 	Node *temp = head;
 	while (temp != NULL)
